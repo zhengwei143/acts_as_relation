@@ -29,6 +29,7 @@ module ActiveRecord
             extend ActiveRecord::ActsAsRelation::AccessMethods
             define_acts_as_accessors(acts_as.name)
             define_acts_as_reflectors(acts_as.name, acts_as.class_name)
+            define_acts_as_forwarders(acts_as)
 
             if defined?(::ProtectedAttributes)
               attr_accessible.update(acts_as.model.attr_accessible)

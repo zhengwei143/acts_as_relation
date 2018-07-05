@@ -15,9 +15,11 @@ module ActiveRecord
 
           def attributes
             if #{model_name}.changed? || changed?
-              @attributes = #{model_name}.attributes.to_hash.merge(super)
+              #{model_name}.attributes.to_hash.merge(super)
+            elsif @attributes
+              @attributes.to_hash
             else
-              @attributes ||= #{model_name}.attributes.to_hash.merge(super)
+              #{model_name}.attributes.to_hash.merge(super)
             end
           end
 
